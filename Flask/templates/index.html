@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flask rest api</title>
+</head>
+<body>
+
+    <form action="http://127.0.0.1:5000/users" method="get">
+        <input type="submit" value="get all user list">
+    </form>
+    <hr>
+    <form action="http://127.0.0.1:5000/users" method="post">
+        <input type="submit" value="get all user data">
+    </form>
+    <hr>
+
+    <form action="http://127.0.0.1:5000/boards" method="get">
+        <input type="submit" value="get all board list">
+    </form>
+    <hr>
+    <form action="http://127.0.0.1:5000/boards" method="post">
+        <input type="submit" value="get all board data">
+    </form>
+   
+    <hr>
+    <form action="http://127.0.0.1:5000/test" method="get">
+        <input type="text" placeholder="이름" name="name">
+        <input type="text" placeholder="메시지" name="msg">
+        <input type="submit" value="GET 방식으로 전송">        
+    </form>
+    <hr>
+    <form action="http://127.0.0.1:5000/test" method="post">
+        <input type="text" placeholder="이름" name="name">
+        <input type="text" placeholder="메시지" name="msg">
+        <input type="submit" value="POST 방식으로 전송">        
+    </form>
+
+    <!-- JS로 서버에 데이터를 보내는 기술 AJAX 기술 사용 -->
+    <hr>
+    <button onclick="aaa()">post + data + subpath</button>
+    <script>
+        function aaa(){
+            fetch('http://127.0.0.1:5000/notes2/hello', {
+                method:'POST',
+                headers:{'Content-Type':'application/x-www-form-urlencoded'},
+                body:'msg=nice to meet you'
+            })
+            .then(res=>res.text())
+            .then(text=>alert(text))
+        }
+    </script>
+
+    
+</body>
+</html>
