@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fast api test</title>
+</head>
+<body>
+
+    <form action="http://127.0.0.1:8000/users" method="get">
+        <input type="submit" value="get all user list~">
+    </form>
+    <hr>
+    <form action="http://127.0.0.1:8000/users" method="post">
+        <input type="submit" value="user post~">
+    </form>
+
+    <hr>
+    <form action="http://127.0.0.1:8000/boards" method="get">
+        <input type="submit" value="board GET~!">
+    </form>
+    <hr>
+    <form action="http://127.0.0.1:8000/boards" method="post">
+        <input type="submit" value="board POST~!">
+    </form>
+
+    <hr>
+    <form action="http://127.0.0.1:8000/test" method="get">
+        <input type="text" placeholder="이름" name="name">
+        <input type="text" placeholder="메세지" name="msg">
+        <input type="submit" value="GET 방식으로 보내기">
+    </form>
+    <hr>
+    <form action="http://127.0.0.1:8000/test" method="post">
+        <input type="text" placeholder="이름" name="name">
+        <input type="text" placeholder="메세지" name="msg">
+        <input type="submit" value="POST 방식으로 보내기">
+    </form>
+    <hr>
+    <form action="http://127.0.0.1:8000/test2" method="post">
+        <input type="text" placeholder="이름" name="name">
+        <input type="text" placeholder="메세지" name="msg">
+        <input type="submit" value="POST 방식으로 보내기2~">
+    </form>
+
+    <hr>
+    <button onclick="aaa()">post + subpath + data</button>
+    <script>
+        function aaa(){
+            fetch('http://127.0.0.1:8000/notes/21', {
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/x-www-form-urlencoded'
+                },
+                body: 'title=Hello&msg=nice+to+meet+you'
+            })
+            .then(res=>res.text()).then(text=>alert(text))
+        }
+    </script>
+
+    <hr>
+    <button onclick="bbb()">post + subpath + json data</button>
+    <script>
+        function bbb(){
+            fetch('http://127.0.0.1:8000/json', {
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({userid:'sam', msg:'jsonjsonjsonjsonjson'})
+            })
+            .then(res=>res.text()).then(text=>alert(text))
+        }
+    </script>
+    
+</body>
+</html>
