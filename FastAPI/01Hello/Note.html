@@ -42,6 +42,10 @@
         <input type="text" placeholder="메씨지" name="msg">
         <input type="submit" value="POST 방식으로 보내기!!2222">
     </form>
+    <hr>
+    <form action="http://127.0.0.1:8000/image" method="get">
+        <input type="submit" value="사진보기">
+    </form>
 
     <hr>
     <button onclick="aaa()">POST + SUBPATH + DATA</button>
@@ -59,7 +63,7 @@
     </script>
 
     <hr>
-    <button>POST + SUBPATH + JSON DATA</button>
+    <button onclick="bbb()">POST + SUBPATH + JSON DATA</button>
     <script>
         function bbb(){
             fetch('http://127.0.0.1:8000/json', {

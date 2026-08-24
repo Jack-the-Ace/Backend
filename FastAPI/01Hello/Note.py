@@ -52,3 +52,32 @@ def html():
     with open('./Note.html', 'r', encoding='utf-8') as f:
         html_content= f.read()
     return HTMLResponse(content=html_content, status_code=200)
+
+from fastapi.responses import FileResponse
+@app.get('/html2')
+def html2():
+    return FileResponse('./Note.html')
+
+@app.get('/image')
+def image():
+    return FileResponse('./images/newyork.jpg')
+
+from fastapi.staticfiles import StaticFiles
+app.mount('/reactapp', StaticFiles(directory='frontend/dist', html=True), name='React Index Page~')
+
+@app.get('/reactapp')
+def react():
+    return FileResponse('./frontend/dist/index.html')
+
+from fastapi.middleware.cors import CORSMiddleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['http://127.0.0.1:5500','http://localhost:5173'],
+    allow_methods=['*'],
+    allow_headers=['*'],
+)
+@app.post('/json')
+def json_post(data:dict):
+    userid= data['userid']
+    message= data['msg']
+    return f"아이디: {userid} / 메세지: {message}"
