@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pydantic test</title>
+</head>
+<body>
+
+    <button onclick="aaa()">json data post</button>
+    <script>
+        function aaa(){
+            fetch('http://127.0.0.1:8000/json_test', {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({userid:'sam', msg:'nice to meet you!', age:'20'})
+            }).then(res=>res.text()).then(text=>alert(text))
+        }
+    </script>
+    
+</body>
+</html>
