@@ -71,7 +71,7 @@ user_pw= '2222'
 sql= '''DELETE FROM user WHERE user_id=%s AND user_pw=SHA2(%s,256)'''
 cursor.execute(sql, (user_id, user_pw))
 
-# 위 실핼요청이 정상적으로 적용되었는지.. 적용된 행(레코드)의 개수로 확인 가능
+# 위 실행요청이 정상적으로 적용되었는지.. 적용된 행(레코드)의 개수로 확인 가능
 if cursor.rowcount == 1:
     print('삭제 성공!')
 else:
